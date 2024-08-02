@@ -5,3 +5,4 @@ django-crispy-forms
 pytest
 pytest-html
 pytest-metadata
+coverage
