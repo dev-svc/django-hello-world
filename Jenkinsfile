@@ -55,7 +55,7 @@ pipeline {
             }
         }
     }
-    stage("SonatScan") {
+    stage("Code Analysis") {
         steps {
             container('python'){
                 withSonarQubeEnv("sonarcloudScanner"){
@@ -75,11 +75,6 @@ pipeline {
     }
     
    stage("Docker Build"){
-        when {
-            expression { 
-                env.GIT_BRANCH == "develop | main" 
-            }
-        }
         steps{
             container('docker') {
                sh "docker build -t rajeshd2090/django-hello-world:1.0 ."
