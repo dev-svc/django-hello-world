@@ -10,13 +10,6 @@ pipeline {
        VIRTUAL_ENV = "${env.WORKSPACE}/env"
    }
    stages {
-    stage("Checkout") {
-        steps {
-            container("python"){
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'dev-svc-github', url: 'https://github.com/dev-svc/django-hello-world.git']])
-            }
-        }
-    }
     stage("Local Install"){
         steps {
             container('python'){
