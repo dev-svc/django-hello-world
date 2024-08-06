@@ -6,7 +6,7 @@ ENV APP_HOME=/microservice/
 RUN mkdir $APP_HOME && adduser -S -D -H python && chown -R python $APP_HOME
 WORKDIR $APP_HOME
 
-ADD requirement.txt $APP_HOME
+ADD requirements.txt $APP_HOME
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ADD . $APP_HOME
