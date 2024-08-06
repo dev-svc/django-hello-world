@@ -74,13 +74,15 @@ pipeline {
         }
     }
     
-       stage("Build") {
-        steps {
-            container('python'){
-                sh """
-                . ${env.VIRTUAL_ENV}/bin/activate 
-               python3 -m build -n
-                """
+   stage("Docker Build"){
+        when {
+            expression { 
+                env.GIT_BRANCH == "develop | main" 
+            }
+        }
+        steps{
+            container('docker') {
+               sh "docker build -t rajeshd2090/django-hello-world:1.0 ."
             }
         }
     }
